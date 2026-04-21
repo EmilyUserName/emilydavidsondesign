@@ -172,6 +172,7 @@
   }
 
   .hero h1 em { font-style: italic; color: var(--gold); }
+  #hero-headline { transition: opacity 0.5s ease; }
 
   .hero-sub {
     font-size: 1.05rem; color: var(--mist);
@@ -617,7 +618,7 @@
       <span class="eyebrow-text">Maine — Web Developer & Maker of Things</span>
     </div>
 
-    <h1>Building things<br>that <em>actually</em><br>work.</h1>
+    <h1 id="hero-headline">Building things, <em>learning</em> everything.</h1>
 
     <p class="hero-sub">
       Full-stack web apps, SaaS tools, and digital products —
@@ -852,6 +853,29 @@
 </footer>
 
 <script>
+  // Rotating headline
+  const headlines = [
+    'Building things, <em>learning</em> everything.',
+    '<em>Fresh eyes</em>, real code.',
+    'Just getting started. <em>Already building.</em>',
+    'Turning ideas into things you can <em>click.</em>',
+    'From idea to something <em>real.</em>',
+    'Making things that <em>didn\'t exist</em> before.',
+    'I make things for the <em>internet.</em>',
+    'Web developer. <em>Work in progress.</em>',
+    'Building on the internet, <em>figuring it out.</em>',
+  ];
+  const hl = document.getElementById('hero-headline');
+  let hlIndex = 0;
+  setInterval(() => {
+    hl.style.opacity = '0';
+    setTimeout(() => {
+      hlIndex = (hlIndex + 1) % headlines.length;
+      hl.innerHTML = headlines[hlIndex];
+      hl.style.opacity = '1';
+    }, 500);
+  }, 4000);
+
   // Hamburger menu
   const hamburger = document.getElementById('hamburger');
   const drawer = document.getElementById('drawer');
