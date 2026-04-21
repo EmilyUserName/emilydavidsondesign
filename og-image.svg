@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0d2136"/>
+
+  <!-- Subtle texture lines -->
+  <line x1="0" y1="630" x2="400" y2="0" stroke="#1e3a52" stroke-width="1" opacity="0.5"/>
+  <line x1="200" y1="630" x2="600" y2="0" stroke="#1e3a52" stroke-width="1" opacity="0.5"/>
+  <line x1="400" y1="630" x2="800" y2="0" stroke="#1e3a52" stroke-width="1" opacity="0.5"/>
+  <line x1="600" y1="630" x2="1000" y2="0" stroke="#1e3a52" stroke-width="1" opacity="0.5"/>
+  <line x1="800" y1="630" x2="1200" y2="0" stroke="#1e3a52" stroke-width="1" opacity="0.5"/>
+
+  <!-- Orange ball -->
+  <circle cx="260" cy="315" r="155" fill="#c45c2e"/>
+  <circle cx="260" cy="315" r="155" fill="url(#ballSheen)" opacity="0.25"/>
+
+  <!-- ED initials -->
+  <text
+    x="260" y="346"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="110"
+    font-weight="bold"
+    fill="white"
+    text-anchor="middle"
+    dominant-baseline="auto"
+    letter-spacing="-4"
+  >ED</text>
+
+  <!-- Name -->
+  <text
+    x="475" y="285"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="68"
+    fill="white"
+    font-weight="normal"
+    letter-spacing="-1"
+  >Emily Davidson</text>
+
+  <!-- Rust underline -->
+  <rect x="475" y="302" width="580" height="3" fill="#c45c2e" rx="2"/>
+
+  <!-- Title -->
+  <text
+    x="478" y="365"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="28"
+    fill="#6aabae"
+    font-weight="400"
+    letter-spacing="5"
+  >WEB DEVELOPER</text>
+
+  <!-- URL -->
+  <text
+    x="478" y="420"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="22"
+    fill="#f4f1eb"
+    opacity="0.5"
+    letter-spacing="1"
+  >emilydavidsondesign.com</text>
+
+  <!-- Gradient def for ball sheen -->
+  <defs>
+    <radialGradient id="ballSheen" cx="38%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="white"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+  </defs>
+</svg>
