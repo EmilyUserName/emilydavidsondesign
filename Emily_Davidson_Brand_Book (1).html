@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emily Davidson — Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:  #0d2136;
+    --slate: #1e3a52;
+    --fog:   #f4f1eb;
+    --sand:  #e8dfc8;
+    --rust:  #c45c2e;
+    --teal:  #6aabae;
+    --mist:  #8faab8;
+    --white: #fdfcfa;
+    --ink:   #3a5266;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--navy);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ─── PRINT ─── */
+  @media print {
+    .no-print { display: none !important; }
+    .page-break { break-before: page; }
+    body { background: white; }
+    .cover { min-height: auto; padding: 4rem 3rem 3rem; }
+  }
+
+  /* ─── COVER ─── */
+  .cover {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding: 5rem 5rem 4rem;
+    position: relative; overflow: hidden;
+  }
+
+  .cover-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    opacity: 0.04;
+  }
+
+  .cover-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+
+  .cover-label {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--mist); font-weight: 400;
+  }
+
+  .cover-date {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mist); font-weight: 400;
+  }
+
+  .cover-center {
+    flex: 1; display: flex; flex-direction: column;
+    justify-content: center; padding: 6rem 0 4rem;
+  }
+
+  .cover-eyebrow {
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); margin-bottom: 2rem; font-weight: 500;
+  }
+
+  .cover-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(4rem, 10vw, 8rem);
+    color: var(--white); line-height: 0.95;
+    margin-bottom: 0.4rem;
+  }
+
+  .cover-name em {
+    font-style: italic; color: var(--sand);
+  }
+
+  .cover-rule {
+    width: 64px; height: 2px;
+    background: var(--rust);
+    margin: 2.5rem 0;
+  }
+
+  .cover-tagline {
+    font-size: 1.15rem; color: var(--mist);
+    font-weight: 300; max-width: 440px; line-height: 1.75;
+  }
+
+  .cover-tagline em {
+    font-style: italic; color: var(--sand);
+  }
+
+  .cover-bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 2rem;
+  }
+
+  .cover-bottom-left {
+    font-size: 0.78rem; color: var(--mist); font-weight: 300;
+  }
+
+  .cover-nav {
+    display: flex; gap: 2rem; list-style: none;
+  }
+
+  .cover-nav a {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mist); text-decoration: none; font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  .cover-nav a:hover { color: var(--sand); }
+
+  /* ─── SECTION WRAPPER ─── */
+  .chapter {
+    padding: 7rem 5rem;
+    border-bottom: 1px solid rgba(13,33,54,0.08);
+    max-width: 100%;
+  }
+
+  .chapter-inner { max-width: 1100px; margin: 0 auto; }
+
+  .chapter-header {
+    display: flex; align-items: baseline; gap: 2rem;
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(13,33,54,0.08);
+  }
+
+  .chapter-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem; color: var(--sand);
+    line-height: 1; font-style: italic;
+    flex-shrink: 0;
+  }
+
+  .chapter-title-block {}
+
+  .chapter-label {
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); font-weight: 500; margin-bottom: 0.35rem;
+  }
+
+  .chapter-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--navy); line-height: 1.1;
+  }
+
+  /* ─── 01 LOGO ─── */
+  .logo-chapter { background: var(--white); }
+
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .logo-cell {
+    border: 1px solid rgba(13,33,54,0.1);
+    border-radius: 4px;
+    padding: 3.5rem 2.5rem;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 2rem; text-align: center;
+  }
+
+  .logo-cell.dark { background: var(--navy); }
+  .logo-cell.sand { background: var(--sand); }
+  .logo-cell.fog  { background: var(--fog); }
+
+  .logo-cell-label {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--mist); font-weight: 400;
+  }
+
+  .logo-cell.dark .logo-cell-label { color: rgba(255,255,255,0.35); }
+
+  /* The wordmark */
+  .wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem; color: var(--navy); letter-spacing: -0.01em; line-height: 1;
+  }
+
+  .wordmark em { font-style: italic; color: var(--rust); }
+
+  .wordmark-light { color: var(--white); }
+  .wordmark-light em { color: var(--sand); }
+
+  /* Monogram mark */
+  .mark-wrap {
+    display: flex; flex-direction: column; align-items: center; gap: 0.75rem;
+  }
+
+  .mark {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--rust);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .mark-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.75rem; color: var(--white); font-style: italic;
+    letter-spacing: -0.03em; line-height: 1;
+    user-select: none;
+  }
+
+  .mark.navy  { background: var(--navy); }
+  .mark.teal  { background: var(--teal); }
+  .mark.white { background: var(--white); }
+  .mark.white .mark-text { color: var(--navy); }
+  .mark.outline {
+    background: transparent;
+    border: 2px solid var(--navy);
+  }
+  .mark.outline .mark-text { color: var(--navy); }
+
+  .logo-dont-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem;
+  }
+
+  .dont-card {
+    border: 1px solid rgba(196,92,46,0.2);
+    border-radius: 4px; padding: 2rem 1.5rem;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; gap: 1.2rem; text-align: center;
+    background: rgba(196,92,46,0.02);
+  }
+
+  .dont-label {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--rust); font-weight: 500;
+  }
+
+  .dont-example { opacity: 0.35; filter: grayscale(0.5); }
+
+  /* ─── 02 COLOR ─── */
+  .color-chapter { background: var(--fog); }
+
+  .color-palette {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(13,33,54,0.1);
+    margin-bottom: 3rem;
+  }
+
+  .swatch {
+    padding: 0; aspect-ratio: 2/3;
+    display: flex; flex-direction: column;
+    justify-content: flex-end; position: relative;
+  }
+
+  .swatch-fill {
+    position: absolute; inset: 0;
+  }
+
+  .swatch-info {
+    position: relative; z-index: 2;
+    padding: 1rem 0.8rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 100%);
+  }
+
+  .swatch-name {
+    font-size: 0.7rem; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.1em; color: white; line-height: 1;
+    margin-bottom: 0.2rem;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+
+  .swatch-hex {
+    font-size: 0.65rem; color: rgba(255,255,255,0.75); font-family: monospace;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  }
+
+  .color-usage-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+
+  .color-use-card {
+    background: var(--white);
+    border: 1px solid rgba(13,33,54,0.08);
+    border-radius: 4px; padding: 1.75rem;
+  }
+
+  .color-use-title {
+    font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 500; color: var(--teal); margin-bottom: 1rem;
+  }
+
+  .color-use-row {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(13,33,54,0.06);
+    font-size: 0.88rem; color: var(--ink); font-weight: 300;
+  }
+
+  .color-use-row:last-child { border-bottom: none; }
+
+  .color-dot {
+    width: 20px; height: 20px;
+    border-radius: 50%; flex-shrink: 0;
+    border: 1px solid rgba(13,33,54,0.1);
+  }
+
+  /* ─── 03 TYPOGRAPHY ─── */
+  .type-chapter { background: var(--white); }
+
+  .type-specimen {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(13,33,54,0.08);
+  }
+
+  .type-specimen:last-child {
+    border-bottom: none; margin-bottom: 0; padding-bottom: 0;
+  }
+
+  .type-meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 1.5rem;
+  }
+
+  .type-meta-left {}
+
+  .type-font-name {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); font-weight: 500; margin-bottom: 0.2rem;
+  }
+
+  .type-font-desc {
+    font-size: 0.82rem; color: var(--mist); font-weight: 300;
+  }
+
+  .type-font-link {
+    font-size: 0.72rem; color: var(--mist); text-decoration: none; font-family: monospace;
+  }
+
+  .type-big {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    color: var(--navy); line-height: 1.0; margin-bottom: 2rem;
+  }
+
+  .type-big em { font-style: italic; color: var(--rust); }
+
+  .type-scale {
+    display: grid; grid-template-columns: 100px 1fr; gap: 0.5rem 1.5rem;
+    align-items: baseline;
+  }
+
+  .scale-label {
+    font-size: 0.68rem; color: var(--mist); font-family: monospace;
+    text-align: right; padding-top: 0.15rem;
+  }
+
+  .scale-example { color: var(--navy); line-height: 1.3; }
+
+  .type-weights {
+    display: flex; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem;
+  }
+
+  .weight-swatch {
+    display: flex; flex-direction: column; gap: 0.2rem;
+  }
+
+  .weight-example {
+    font-size: 1.25rem; color: var(--navy); line-height: 1;
+  }
+
+  .weight-label {
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mist); font-weight: 400;
+  }
+
+  /* pairing demo */
+  .type-pairing {
+    background: var(--navy);
+    border-radius: 4px; padding: 3rem;
+    margin-top: 3rem;
+  }
+
+  .pairing-label {
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--mist); margin-bottom: 1.5rem; font-weight: 400;
+  }
+
+  .pairing-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem; color: var(--white); line-height: 1.1; margin-bottom: 1rem;
+  }
+
+  .pairing-heading em { font-style: italic; color: var(--sand); }
+
+  .pairing-body {
+    font-size: 1rem; color: var(--mist); font-weight: 300; max-width: 560px;
+    line-height: 1.8;
+  }
+
+  /* ─── 04 VOICE ─── */
+  .voice-chapter { background: var(--sand); }
+
+  .voice-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .voice-card {
+    background: var(--white);
+    border: 1px solid rgba(13,33,54,0.08);
+    border-radius: 4px; padding: 2rem;
+  }
+
+  .voice-card-title {
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--rust); font-weight: 500; margin-bottom: 1.25rem;
+  }
+
+  .voice-trait {
+    display: flex; gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(13,33,54,0.06);
+    align-items: flex-start;
+  }
+
+  .voice-trait:last-child { border-bottom: none; }
+
+  .trait-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--rust); flex-shrink: 0; margin-top: 0.55rem;
+  }
+
+  .trait-text {
+    font-size: 0.9rem; color: var(--ink); line-height: 1.6; font-weight: 300;
+  }
+
+  .trait-text strong { color: var(--navy); font-weight: 500; }
+
+  .voice-compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+
+  .compare-col {}
+
+  .compare-label {
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 500; margin-bottom: 1rem; padding: 0.4rem 0.8rem;
+    border-radius: 2px; display: inline-block;
+  }
+
+  .compare-label.yes { background: rgba(42,127,124,0.1); color: var(--teal); }
+  .compare-label.no  { background: rgba(196,92,46,0.1);  color: var(--rust); }
+
+  .compare-item {
+    padding: 1rem 1.25rem;
+    border-radius: 3px; margin-bottom: 0.6rem;
+    font-size: 0.9rem; line-height: 1.6; font-weight: 300;
+    font-style: italic;
+  }
+
+  .compare-item.yes {
+    background: var(--white);
+    border-left: 3px solid var(--teal);
+    color: var(--ink);
+  }
+
+  .compare-item.no {
+    background: rgba(196,92,46,0.04);
+    border-left: 3px solid rgba(196,92,46,0.3);
+    color: var(--ink); text-decoration: none; opacity: 0.7;
+  }
+
+  .voice-kitten {
+    background: var(--navy);
+    border-radius: 4px; padding: 3rem;
+    text-align: center; margin-top: 3rem;
+    position: relative; overflow: hidden;
+  }
+
+  .kitten-quote-bb {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+    color: var(--sand); line-height: 1.6; font-style: italic;
+    margin-bottom: 1rem; position: relative; z-index: 2;
+  }
+
+  .kitten-quote-bb em { font-style: normal; color: var(--rust); }
+
+  .kitten-attr {
+    font-size: 0.78rem; color: var(--mist); letter-spacing: 0.1em;
+    text-transform: uppercase; position: relative; z-index: 2;
+  }
+
+  .big-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18rem; color: rgba(244,241,235,0.04);
+    position: absolute; top: -5rem; left: 1rem;
+    line-height: 1; pointer-events: none; user-select: none; z-index: 1;
+  }
+
+  /* ─── 05 IMAGERY ─── */
+  .imagery-chapter { background: var(--white); }
+
+  .imagery-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .imagery-card {
+    border-radius: 4px; overflow: hidden;
+    border: 1px solid rgba(13,33,54,0.08);
+  }
+
+  .imagery-placeholder {
+    height: 220px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.75rem; position: relative; overflow: hidden;
+    text-align: center; padding: 1.5rem;
+  }
+
+  /* Subtle stripe pattern via CSS */
+  .imagery-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0) 0px,
+      rgba(255,255,255,0) 6px,
+      rgba(255,255,255,0.08) 6px,
+      rgba(255,255,255,0.08) 7px
+    );
+  }
+
+  .imagery-placeholder.a { background: #3d5a47; }
+  .imagery-placeholder.b { background: #1c3047; }
+  .imagery-placeholder.c { background: #4a3520; }
+  .imagery-placeholder.d { background: #2d4a3e; }
+  .imagery-placeholder.e { background: #1e2f4a; }
+  .imagery-placeholder.f { background: #3a2a1a; }
+
+  .imagery-icon {
+    font-size: 1.5rem; opacity: 0.5; position: relative; z-index: 2;
+  }
+
+  .imagery-desc {
+    font-size: 0.75rem; color: rgba(255,255,255,0.5);
+    font-family: monospace; position: relative; z-index: 2; line-height: 1.4;
+  }
+
+  .imagery-card-info {
+    padding: 1.1rem 1.25rem;
+    background: var(--fog);
+  }
+
+  .imagery-card-name {
+    font-size: 0.75rem; font-weight: 500; color: var(--navy);
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+
+  .imagery-card-note {
+    font-size: 0.78rem; color: var(--mist); font-weight: 300; margin-top: 0.2rem;
+  }
+
+  .imagery-rules {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  }
+
+  .imagery-rule-card {
+    background: var(--fog); border-radius: 4px; padding: 1.75rem;
+    border: 1px solid rgba(13,33,54,0.07);
+  }
+
+  .imagery-rule-title {
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    font-weight: 500; margin-bottom: 1rem;
+  }
+
+  .imagery-rule-title.yes { color: var(--teal); }
+  .imagery-rule-title.no  { color: var(--rust); }
+
+  .imagery-rule-item {
+    font-size: 0.88rem; color: var(--ink); font-weight: 300;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(13,33,54,0.06);
+    display: flex; gap: 0.6rem; align-items: flex-start;
+  }
+
+  .imagery-rule-item:last-child { border-bottom: none; }
+
+  .rule-mark { font-size: 0.75rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  /* ─── 06 COMPONENTS ─── */
+  .comp-chapter { background: var(--fog); }
+
+  .comp-section { margin-bottom: 3.5rem; }
+
+  .comp-section-title {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); font-weight: 500; margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem; border-bottom: 1px solid rgba(13,33,54,0.08);
+  }
+
+  /* Buttons */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+
+  .btn {
+    display: inline-block; padding: 0.8rem 1.9rem;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: all 0.2s; cursor: pointer; border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary { background: var(--rust); color: var(--white); }
+  .btn-primary:hover { background: #a84e26; }
+  .btn-secondary { background: var(--navy); color: var(--white); }
+  .btn-secondary:hover { background: var(--slate); }
+  .btn-outline { background: transparent; border: 1.5px solid var(--navy); color: var(--navy); }
+  .btn-outline:hover { background: var(--navy); color: var(--white); }
+  .btn-ghost { background: transparent; color: var(--rust); padding-left: 0; padding-right: 0;
+    border-bottom: 1.5px solid var(--rust); border-radius: 0; }
+  .btn-ghost:hover { color: #a84e26; border-color: #a84e26; }
+  .btn-sm { padding: 0.5rem 1.1rem; font-size: 0.72rem; }
+
+  /* Tags/pills */
+  .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+  .pill {
+    display: inline-block;
+    padding: 0.28rem 0.75rem;
+    font-size: 0.75rem; border-radius: 2px;
+    font-weight: 400; font-family: 'DM Sans', sans-serif;
+  }
+
+  .pill-default { background: var(--white); border: 1px solid rgba(13,33,54,0.12); color: var(--ink); }
+  .pill-rust { background: rgba(196,92,46,0.1); border: 1px solid rgba(196,92,46,0.2); color: var(--rust); }
+  .pill-teal { background: rgba(42,127,124,0.1); border: 1px solid rgba(42,127,124,0.2); color: var(--teal); }
+  .pill-navy { background: var(--navy); color: var(--sand); border: 1px solid transparent; }
+
+  /* Cards */
+  .cards-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+
+  .comp-card {
+    background: var(--white);
+    border: 1px solid rgba(13,33,54,0.08);
+    border-radius: 4px; overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+
+  .comp-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(13,33,54,0.12); }
+
+  .comp-card-visual {
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .comp-card-visual.v1 { background: linear-gradient(135deg, var(--navy), var(--slate)); }
+  .comp-card-visual.v2 { background: linear-gradient(135deg, #16173d, #2b1654); }
+  .comp-card-visual.v3 { background: linear-gradient(135deg, var(--teal), #4d8e92); }
+
+  .comp-card-body { padding: 1.1rem 1.25rem; }
+
+  .comp-card-tag {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--rust); font-weight: 500; margin-bottom: 0.3rem;
+  }
+
+  .comp-card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem; color: var(--navy); margin-bottom: 0.3rem;
+  }
+
+  .comp-card-desc {
+    font-size: 0.8rem; color: var(--ink); line-height: 1.55; font-weight: 300;
+  }
+
+  /* Nav example */
+  .nav-example {
+    background: rgba(244,241,235,0.92);
+    border: 1px solid rgba(13,33,54,0.08);
+    border-radius: 4px;
+    padding: 1.1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-ex-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem; color: var(--navy); text-decoration: none;
+  }
+
+  .nav-ex-links {
+    display: flex; gap: 1.75rem; list-style: none;
+  }
+
+  .nav-ex-links a {
+    font-size: 0.72rem; font-weight: 500; color: var(--slate);
+    text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  .nav-ex-cta {
+    font-size: 0.72rem; font-weight: 500;
+    background: var(--rust); color: var(--white);
+    padding: 0.4rem 1rem; border-radius: 2px;
+    letter-spacing: 0.05em; text-decoration: none;
+  }
+
+  /* Section label pattern */
+  .pattern-block {
+    background: var(--white);
+    border: 1px solid rgba(13,33,54,0.08);
+    border-radius: 4px; padding: 2rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+
+  .pattern-item { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .pattern-swatch-label {
+    font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mist); font-weight: 400;
+  }
+
+  .label-example {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); font-weight: 500;
+  }
+
+  .heading-example-s {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem; color: var(--navy); line-height: 1.1;
+  }
+
+  .heading-example-s em { font-style: italic; }
+
+  /* ─── BACK COVER ─── */
+  .back-cover {
+    min-height: 50vh;
+    background: var(--navy);
+    padding: 6rem 5rem;
+    display: flex; align-items: center;
+  }
+
+  .back-cover-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: flex; justify-content: space-between; align-items: flex-end;
+  }
+
+  .back-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    color: var(--white); line-height: 1.1;
+  }
+
+  .back-name em { font-style: italic; color: var(--sand); }
+
+  .back-meta {
+    text-align: right;
+  }
+
+  .back-meta p {
+    font-size: 0.82rem; color: var(--mist); font-weight: 300;
+    line-height: 2;
+  }
+
+  .back-meta a { color: var(--sand); text-decoration: none; }
+  .back-meta a:hover { color: var(--rust); }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .cover { padding: 3.5rem 2.5rem 3rem; }
+    .chapter { padding: 5rem 2.5rem; }
+    .logo-grid { grid-template-columns: 1fr; }
+    .color-palette { grid-template-columns: repeat(3, 1fr); }
+    .voice-grid { grid-template-columns: 1fr; }
+    .imagery-grid { grid-template-columns: 1fr 1fr; }
+    .cards-row { grid-template-columns: 1fr; }
+    .back-cover { padding: 4rem 2.5rem; }
+    .back-cover-inner { flex-direction: column; gap: 2rem; align-items: flex-start; }
+    .back-meta { text-align: left; }
+    .color-usage-grid { grid-template-columns: 1fr; }
+    .logo-dont-grid { grid-template-columns: 1fr 1fr; }
+    .imagery-rules { grid-template-columns: 1fr; }
+    .voice-compare { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .cover { padding: 2.5rem 1.75rem 2.5rem; }
+    .chapter { padding: 4rem 1.75rem; }
+    .color-palette { grid-template-columns: repeat(2, 1fr); }
+    .imagery-grid { grid-template-columns: 1fr; }
+    .logo-dont-grid { grid-template-columns: 1fr; }
+    .chapter-num { font-size: 3.5rem; }
+    .cover-nav { display: none; }
+    .cards-row { grid-template-columns: 1fr; }
+    .pattern-block { grid-template-columns: 1fr; }
+    .back-cover { min-height: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover" id="top">
+  <svg class="cover-bg" viewBox="0 0 900 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="750" cy="150" r="400" stroke="white" stroke-width="1"/>
+    <circle cx="750" cy="150" r="280" stroke="white" stroke-width="1"/>
+    <circle cx="750" cy="150" r="160" stroke="white" stroke-width="1"/>
+    <line x1="350" y1="150" x2="1150" y2="150" stroke="white" stroke-width="0.5"/>
+    <line x1="750" y1="-250" x2="750" y2="550" stroke="white" stroke-width="0.5"/>
+    <line x1="467" y1="-133" x2="1033" y2="433" stroke="white" stroke-width="0.5"/>
+    <line x1="1033" y1="-133" x2="467" y2="433" stroke="white" stroke-width="0.5"/>
+  </svg>
+
+  <div class="cover-top">
+    <span class="cover-label">Brand Identity Book</span>
+    <span class="cover-date">2026 Edition</span>
+  </div>
+
+  <div class="cover-center">
+    <p class="cover-eyebrow">Emily Davidson — Portland, Maine</p>
+    <h1 class="cover-name">A Brand <em>Built</em><br>Like Everything<br>Else She Builds.</h1>
+    <div class="cover-rule"></div>
+    <p class="cover-tagline">
+      <em>Salty as the Atlantic. Kind as a kitten in afternoon sun.</em>
+    </p>
+  </div>
+
+  <div class="cover-bottom">
+    <p class="cover-bottom-left">Version 1.0 &nbsp;·&nbsp; Emily Davidson &nbsp;·&nbsp; Web Developer</p>
+    <ul class="cover-nav no-print">
+      <li><a href="#logo">01 Logo</a></li>
+      <li><a href="#color">02 Color</a></li>
+      <li><a href="#type">03 Type</a></li>
+      <li><a href="#voice">04 Voice</a></li>
+      <li><a href="#imagery">05 Imagery</a></li>
+      <li><a href="#components">06 Components</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════ 01 LOGO ══════════ -->
+<div class="chapter logo-chapter" id="logo">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <span class="chapter-num">01</span>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Identity</div>
+        <h2 class="chapter-title">Logo & Mark</h2>
+      </div>
+    </div>
+
+    <!-- Primary wordmark usages -->
+    <div class="logo-grid">
+      <div class="logo-cell fog">
+        <div class="wordmark">Emily <em>Davidson</em></div>
+        <span class="logo-cell-label">Primary — on fog</span>
+      </div>
+      <div class="logo-cell dark">
+        <div class="wordmark wordmark-light">Emily <em>Davidson</em></div>
+        <span class="logo-cell-label">Reversed — on navy</span>
+      </div>
+      <div class="logo-cell fog">
+        <div class="mark-wrap">
+          <div class="mark"><span class="mark-text">ED</span></div>
+          <div class="wordmark" style="font-size:1.25rem; letter-spacing:0.15em; text-transform:uppercase;">Emily Davidson</div>
+        </div>
+        <span class="logo-cell-label">Mark + stacked wordmark</span>
+      </div>
+      <div class="logo-cell sand">
+        <div class="mark"><span class="mark-text">ED</span></div>
+        <span class="logo-cell-label">Monogram mark only</span>
+      </div>
+    </div>
+
+    <!-- Mark variations -->
+    <div style="margin-bottom:2rem;">
+      <p style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); font-weight:500; margin-bottom:1.25rem;">Mark color variations</p>
+      <div style="display:flex; gap:1.25rem; flex-wrap:wrap; align-items:center;">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.6rem;">
+          <div class="mark"><span class="mark-text">ED</span></div>
+          <span style="font-size:0.65rem; color:var(--mist); text-transform:uppercase; letter-spacing:0.1em;">Rust / primary</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.6rem;">
+          <div class="mark navy"><span class="mark-text">ED</span></div>
+          <span style="font-size:0.65rem; color:var(--mist); text-transform:uppercase; letter-spacing:0.1em;">Navy</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.6rem;">
+          <div class="mark teal"><span class="mark-text">ED</span></div>
+          <span style="font-size:0.65rem; color:var(--mist); text-transform:uppercase; letter-spacing:0.1em;">Teal</span>
+        </div>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:0.6rem; background:var(--navy); padding:0.75rem 1rem; border-radius:4px;">
+          <div class="mark white"><span class="mark-text">ED</span></div>
+          <span style="font-size:0.65rem; color:var(--mist); text-transform:uppercase; letter-spacing:0.1em;">White (dark bg)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Don'ts -->
+    <p style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--rust); font-weight:500; margin-bottom:1.25rem;">Do not do these things</p>
+    <div class="logo-dont-grid">
+      <div class="dont-card">
+        <div class="dont-example">
+          <div class="wordmark" style="font-size:1.5rem; color: #888; font-style:normal; font-family:Arial,sans-serif;">Emily Davidson</div>
+        </div>
+        <span class="dont-label">Don't change the typeface</span>
+      </div>
+      <div class="dont-card">
+        <div class="dont-example">
+          <div class="wordmark" style="font-size:1.5rem; letter-spacing:0.25em;">Emily Davidson</div>
+        </div>
+        <span class="dont-label">Don't over-track or stretch</span>
+      </div>
+      <div class="dont-card">
+        <div class="dont-example" style="background: linear-gradient(135deg, pink, orange); padding: 0.5rem 1rem; border-radius:4px;">
+          <div class="wordmark wordmark-light" style="font-size:1.5rem;">Emily Davidson</div>
+        </div>
+        <span class="dont-label">Don't place on busy backgrounds</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 02 COLOR ══════════ -->
+<div class="chapter color-chapter page-break" id="color">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <span class="chapter-num">02</span>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Identity</div>
+        <h2 class="chapter-title">Color Palette</h2>
+      </div>
+    </div>
+
+    <div class="color-palette">
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#0d2136;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Navy</div>
+          <div class="swatch-hex">#0d2136</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#1e3a52;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Slate</div>
+          <div class="swatch-hex">#1e3a52</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#c45c2e;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Rust</div>
+          <div class="swatch-hex">#c45c2e</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#6aabae;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Teal</div>
+          <div class="swatch-hex">#6aabae</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#e8dfc8;"></div>
+        <div class="swatch-info" style="background: linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 100%);">
+          <div class="swatch-name">Sand</div>
+          <div class="swatch-hex">#e8dfc8</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:#f4f1eb;"></div>
+        <div class="swatch-info" style="background: linear-gradient(to top, rgba(0,0,0,0.2) 0%, transparent 100%);">
+          <div class="swatch-name">Fog</div>
+          <div class="swatch-hex">#f4f1eb</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-usage-grid">
+      <div class="color-use-card">
+        <div class="color-use-title">Primary usage</div>
+        <div class="color-use-row">
+          <div class="color-dot" style="background:#0d2136;"></div>
+          <span><strong>Navy</strong> — backgrounds, headers, anchor text</span>
+        </div>
+        <div class="color-use-row">
+          <div class="color-dot" style="background:#f4f1eb;"></div>
+          <span><strong>Fog</strong> — page backgrounds, light sections</span>
+        </div>
+        <div class="color-use-row">
+          <div class="color-dot" style="background:#c45c2e;"></div>
+          <span><strong>Rust</strong> — CTAs, links, labels, accents</span>
+        </div>
+        <div class="color-use-row">
+          <div class="color-dot" style="background:#6aabae;"></div>
+          <span><strong>Teal</strong> — secondary actions, skill tags</span>
+        </div>
+      </div>
+      <div class="color-use-card">
+        <div class="color-use-title">Supporting usage</div>
+        <div class="color-use-row">
+          <div class="color-dot" style="background:#e8dfc8;"></div>
+          <span><strong>Sand</strong> — warm highlights, pull quotes on dark</span>
+        </div>
+        <div class="color-use-row">
+          <div class="color-dot" style="background:#1e3a52;"></div>
+          <span><strong>Slate</strong> — secondary text, nav links</span>
+        </div>
+        <div class="color-use-row">
+          <div class="color-dot" style="background:#8faab8;"></div>
+          <span><strong>Mist</strong> — supporting text on dark backgrounds</span>
+        </div>
+        <div class="color-use-row">
+          <div class="color-dot" style="background:#3a5266;"></div>
+          <span><strong>Ink</strong> — body copy on light backgrounds</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color combos -->
+    <div style="margin-top: 2.5rem;">
+      <p style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); font-weight:500; margin-bottom:1.25rem;">Approved combinations</p>
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+        <div style="height:64px; min-width:140px; background:var(--navy); border-radius:3px; display:flex; align-items:center; justify-content:center; flex:1;">
+          <span style="font-size:0.8rem; color:var(--sand); font-weight:500;">Navy + Sand</span>
+        </div>
+        <div style="height:64px; min-width:140px; background:var(--rust); border-radius:3px; display:flex; align-items:center; justify-content:center; flex:1;">
+          <span style="font-size:0.8rem; color:var(--white); font-weight:500;">Rust + White</span>
+        </div>
+        <div style="height:64px; min-width:140px; background:var(--fog); border-radius:3px; display:flex; align-items:center; justify-content:center; flex:1; border:1px solid rgba(13,33,54,0.1);">
+          <span style="font-size:0.8rem; color:var(--navy); font-weight:500;">Fog + Navy</span>
+        </div>
+        <div style="height:64px; min-width:140px; background:var(--sand); border-radius:3px; display:flex; align-items:center; justify-content:center; flex:1;">
+          <span style="font-size:0.8rem; color:var(--navy); font-weight:500;">Sand + Navy</span>
+        </div>
+        <div style="height:64px; min-width:140px; background:var(--teal); border-radius:3px; display:flex; align-items:center; justify-content:center; flex:1;">
+          <span style="font-size:0.8rem; color:var(--white); font-weight:500;">Teal + White</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 03 TYPOGRAPHY ══════════ -->
+<div class="chapter type-chapter page-break" id="type">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <span class="chapter-num">03</span>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Identity</div>
+        <h2 class="chapter-title">Typography</h2>
+      </div>
+    </div>
+
+    <!-- DM Serif Display -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-meta-left">
+          <div class="type-font-name">DM Serif Display</div>
+          <div class="type-font-desc">Display face — headings, pull quotes, hero text</div>
+        </div>
+        <a class="type-font-link" href="https://fonts.google.com/specimen/DM+Serif+Display" target="_blank">fonts.google.com →</a>
+      </div>
+      <div class="type-big">
+        Building things<br>that <em>actually</em> work.
+      </div>
+      <div class="type-scale">
+        <span class="scale-label">96px / 6rem</span>
+        <span class="scale-example" style="font-family:'DM Serif Display',serif; font-size:3.75rem; color:var(--navy);">Display</span>
+
+        <span class="scale-label">60px / 3.75rem</span>
+        <span class="scale-example" style="font-family:'DM Serif Display',serif; font-size:2.5rem; color:var(--navy);">Heading 1 — Builder at heart</span>
+
+        <span class="scale-label">36px / 2.25rem</span>
+        <span class="scale-example" style="font-family:'DM Serif Display',serif; font-size:1.75rem; color:var(--navy);">Heading 2 — Selected work</span>
+
+        <span class="scale-label">24px / 1.5rem</span>
+        <span class="scale-example" style="font-family:'DM Serif Display',serif; font-size:1.35rem; color:var(--navy);">Heading 3 — Skills & tools</span>
+      </div>
+    </div>
+
+    <!-- DM Sans -->
+    <div class="type-specimen">
+      <div class="type-meta">
+        <div class="type-meta-left">
+          <div class="type-font-name">DM Sans</div>
+          <div class="type-font-desc">Body & UI face — paragraphs, labels, buttons, captions</div>
+        </div>
+        <a class="type-font-link" href="https://fonts.google.com/specimen/DM+Sans" target="_blank">fonts.google.com →</a>
+      </div>
+      <div class="type-weights">
+        <div class="weight-swatch">
+          <span class="weight-example" style="font-weight:300;">Light 300</span>
+          <span class="weight-label">Body copy</span>
+        </div>
+        <div class="weight-swatch">
+          <span class="weight-example" style="font-weight:400;">Regular 400</span>
+          <span class="weight-label">Default UI</span>
+        </div>
+        <div class="weight-swatch">
+          <span class="weight-example" style="font-weight:500;">Medium 500</span>
+          <span class="weight-label">Labels, nav</span>
+        </div>
+        <div class="weight-swatch">
+          <span class="weight-example" style="font-weight:600;">Semibold 600</span>
+          <span class="weight-label">Emphasis</span>
+        </div>
+      </div>
+      <div class="type-scale" style="margin-top:1.5rem;">
+        <span class="scale-label">18px</span>
+        <span class="scale-example" style="font-size:1.125rem; font-weight:300; color:var(--ink);">I make web apps, SaaS tools, and digital products.</span>
+        <span class="scale-label">16px</span>
+        <span class="scale-example" style="font-size:1rem; font-weight:300; color:var(--ink);">Based on the Maine coast, I build full-stack web products independently.</span>
+        <span class="scale-label">13px · allcaps</span>
+        <span class="scale-example" style="font-size:0.78rem; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; color:var(--rust);">Section label · Portland, Maine</span>
+        <span class="scale-label">11px · mono</span>
+        <span class="scale-example" style="font-size:0.72rem; font-family:monospace; color:var(--mist);">#0d2136 · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="650d0009090a2500080c091c0104130c01160a0b4b060a08">[email&#160;protected]</a></span>
+      </div>
+    </div>
+
+    <!-- Pairing demo -->
+    <div class="type-pairing">
+      <div class="pairing-label">In situ — heading + body pairing</div>
+      <h3 class="pairing-heading">Builder at heart,<br><em>developer by choice.</em></h3>
+      <p class="pairing-body">I don't have an elevator pitch. I have calluses, a paintbrush, a lesson plan, and a keyboard — and I will deploy all of them in the same week without blinking.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 04 VOICE ══════════ -->
+<div class="chapter voice-chapter page-break" id="voice">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <span class="chapter-num">04</span>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Brand Personality</div>
+        <h2 class="chapter-title">Voice & Tone</h2>
+      </div>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-card-title">Who Emily is</div>
+        <div class="voice-trait">
+          <div class="trait-dot"></div>
+          <div class="trait-text"><strong>She figures it out.</strong> No team of ten. No perfect setup. Just the problem, the tools, and enough stubbornness to finish.</div>
+        </div>
+        <div class="voice-trait">
+          <div class="trait-dot"></div>
+          <div class="trait-text"><strong>She doesn't quit mid-project.</strong> Construction. Acupuncture. Teaching. Development. Marine mechanics. She sees things through.</div>
+        </div>
+        <div class="voice-trait">
+          <div class="trait-dot"></div>
+          <div class="trait-text"><strong>Genuinely warm.</strong> Maine-direct and kitten-kind. She'll tell you the truth and mean well by it.</div>
+        </div>
+        <div class="voice-trait">
+          <div class="trait-dot"></div>
+          <div class="trait-text"><strong>Making things is her first language.</strong> Fine art, carpentry, code, food — the medium changes. The instinct doesn't.</div>
+        </div>
+        <div class="voice-trait">
+          <div class="trait-dot"></div>
+          <div class="trait-text"><strong>Practical, not precious.</strong> She ships. Real users. Real products. Not pretty prototypes left in a drawer.</div>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-card-title">How Emily writes</div>
+        <div class="voice-trait">
+          <div class="trait-dot" style="background:var(--teal);"></div>
+          <div class="trait-text"><strong>Short sentences.</strong> Get to it. Maine bluntness is a feature, not a bug.</div>
+        </div>
+        <div class="voice-trait">
+          <div class="trait-dot" style="background:var(--teal);"></div>
+          <div class="trait-text"><strong>Concrete details.</strong> Real paying users. Maine-made. 2,957 organizations. Specificity earns trust.</div>
+        </div>
+        <div class="voice-trait">
+          <div class="trait-dot" style="background:var(--teal);"></div>
+          <div class="trait-text"><strong>Self-aware humor.</strong> She's allowed to be funny about herself. The brother quote lives here.</div>
+        </div>
+        <div class="voice-trait">
+          <div class="trait-dot" style="background:var(--teal);"></div>
+          <div class="trait-text"><strong>No corporate fluff.</strong> Synergy. Leverage. Circle back. Deliverables. These words are banned.</div>
+        </div>
+        <div class="voice-trait">
+          <div class="trait-dot" style="background:var(--teal);"></div>
+          <div class="trait-text"><strong>Italic for feeling.</strong> DM Serif Display italic carries her warmth and personality in headlines.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Say this / not that -->
+    <div class="voice-compare">
+      <div class="compare-col">
+        <div class="compare-label yes">✓ Say this</div>
+        <div class="compare-item yes">"I ship practical things, not just pretty prototypes."</div>
+        <div class="compare-item yes">"Real paying users. Built lean. Distributed via marina flyers."</div>
+        <div class="compare-item yes">"My neighbors call me when the answer is complicated. My clients do too."</div>
+        <div class="compare-item yes">"Maine-made. Full-stack. Self-directed."</div>
+        <div class="compare-item yes">"I don't have an elevator pitch. I have calluses."</div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-label no">✗ Not this</div>
+        <div class="compare-item no">"Passionate full-stack developer with proven expertise."</div>
+        <div class="compare-item no">"Leveraging cutting-edge technologies to deliver results."</div>
+        <div class="compare-item no">"I'm a hardworking team player who thinks outside the box."</div>
+        <div class="compare-item no">"Results-oriented developer delivering seamless user experiences."</div>
+        <div class="compare-item no">"Looking to utilize my skills in a dynamic environment."</div>
+      </div>
+    </div>
+
+    <!-- The kitten quote — a brand asset -->
+    <div class="voice-kitten">
+      <div class="big-quote">"</div>
+      <p class="kitten-quote-bb">
+        "She is salty as the Atlantic. She is <em>as kind as a kitten asleep in a patch of afternoon sun.</em> And she is, without question, one of a kind."
+      </p>
+      <p class="kitten-attr">— Written by someone who has known me my whole life, and still likes me</p>
+    </div>
+
+    <div style="margin-top: 2rem; background: var(--white); border-radius:4px; padding:1.75rem; border:1px solid rgba(13,33,54,0.08);">
+      <div style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--rust); font-weight:500; margin-bottom:0.75rem;">The kitten quote is a brand asset</div>
+      <p style="font-size:0.9rem; color:var(--ink); font-weight:300; line-height:1.75; max-width:680px;">This quote is a gift. It's funny, it's real, it's warm, and it's entirely original. Use it on the website, in cover letters, in email footers. It's the most human thing in the whole brand. Don't throw it away for a stock headline.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 05 IMAGERY ══════════ -->
+<div class="chapter imagery-chapter page-break" id="imagery">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <span class="chapter-num">05</span>
+      <div class="chapter-title-block">
+        <div class="chapter-label">Visual Direction</div>
+        <h2 class="chapter-title">Photography & Imagery</h2>
+      </div>
+    </div>
+
+    <div class="imagery-grid">
+      <div class="imagery-card">
+        <div class="imagery-placeholder a">
+          <div class="imagery-desc">coastal Maine landscape<br>overcast light, rocky shore<br>desaturated, natural</div>
+        </div>
+        <div class="imagery-card-info">
+          <div class="imagery-card-name">Landscape</div>
+          <div class="imagery-card-note">Cool, quiet, expansive. Atlantic coast.</div>
+        </div>
+      </div>
+      <div class="imagery-card">
+        <div class="imagery-placeholder b">
+          <div class="imagery-desc">hands on keyboard<br>or working with tools<br>honest, unposed</div>
+        </div>
+        <div class="imagery-card-info">
+          <div class="imagery-card-name">At work</div>
+          <div class="imagery-card-note">Real work, real hands. No stock smiles.</div>
+        </div>
+      </div>
+      <div class="imagery-card">
+        <div class="imagery-placeholder c">
+          <div class="imagery-desc">warm interior light<br>workshop or studio feel<br>texture, natural materials</div>
+        </div>
+        <div class="imagery-card-info">
+          <div class="imagery-card-name">Interior / studio</div>
+          <div class="imagery-card-note">Warm, textured, made-by-hand feeling.</div>
+        </div>
+      </div>
+      <div class="imagery-card">
+        <div class="imagery-placeholder d">
+          <div class="imagery-desc">close-up, detail shot<br>rope, wood, tools<br>or laptop on rough surface</div>
+        </div>
+        <div class="imagery-card-info">
+          <div class="imagery-card-name">Texture / detail</div>
+          <div class="imagery-card-note">Macro, honest, analog + digital overlap.</div>
+        </div>
+      </div>
+      <div class="imagery-card">
+        <div class="imagery-placeholder e">
+          <div class="imagery-desc">product screenshot<br>on dark background<br>clean, sharp, no chrome</div>
+        </div>
+        <div class="imagery-card-info">
+          <div class="imagery-card-name">Product / UI</div>
+          <div class="imagery-card-note">Dark bg, sharp crop. Let the work speak.</div>
+        </div>
+      </div>
+      <div class="imagery-card">
+        <div class="imagery-placeholder f">
+          <div class="imagery-desc">portrait — candid<br>natural light, outdoors<br>not a headshot, a person</div>
+        </div>
+        <div class="imagery-card-info">
+          <div class="imagery-card-name">Portrait</div>
+          <div class="imagery-card-note">Candid, natural light. No studio backdrops.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="imagery-rules">
+      <div class="imagery-rule-card">
+        <div class="imagery-rule-title yes">✓ Do use</div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Natural, overcast, or golden-hour light. Harsh flash is banned.
+        </div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Real textures — wood, rope, rock, sea, paint, keyboard.
+        </div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Slightly desaturated edits. Warm but not Instagram-warm.
+        </div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Maine as a setting whenever possible. It's a differentiator.
+        </div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Candid portraits. You working, thinking, doing something.
+        </div>
+      </div>
+      <div class="imagery-rule-card">
+        <div class="imagery-rule-title no">✗ Avoid</div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Stock photos of people in offices pretending to work.
+        </div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Neon or overly saturated color grading.
+        </div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Generic tech imagery — glowing keyboards, server rooms.
+        </div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          AI-generated illustrations unless clearly intentional.
+        </div>
+        <div class="imagery-rule-item">
+          <span class="rule-mark">→</span>
+          Formal headshot style. You're not a consultant in a suit.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ 06 COMPONENTS ══════════ -->
+<div class="chapter comp-chapter page-break" id="components">
+  <div class="chapter-inner">
+    <div class="chapter-header">
+      <span class="chapter-num">06</span>
+      <div class="chapter-title-block">
+        <div class="chapter-label">UI System</div>
+        <h2 class="chapter-title">Components</h2>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="comp-section">
+      <div class="comp-section-title">Buttons</div>
+      <div class="btn-row">
+        <a class="btn btn-primary">Hire me</a>
+        <a class="btn btn-secondary">See my work</a>
+        <a class="btn btn-outline">Get in touch</a>
+        <a class="btn btn-ghost">View project →</a>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-primary btn-sm">Small CTA</a>
+        <a class="btn btn-outline btn-sm">Small outline</a>
+      </div>
+      <div style="margin-top:1rem; font-size:0.82rem; color:var(--mist); font-weight:300; line-height:1.75;">
+        Border radius: 2px — deliberately square. Letter-spacing: 0.05–0.06em. Always uppercase. Never rounded pill buttons.
+      </div>
+    </div>
+
+    <!-- Tags & Pills -->
+    <div class="comp-section">
+      <div class="comp-section-title">Tags & Pills</div>
+      <div class="pill-row" style="margin-bottom:0.75rem;">
+        <span class="pill pill-rust">SaaS · SMS · Maine</span>
+        <span class="pill pill-teal">Full-stack</span>
+        <span class="pill pill-default">Web developer</span>
+        <span class="pill pill-navy">Shipped</span>
+        <span class="pill pill-default">Acupuncturist</span>
+        <span class="pill pill-rust">AI · Subscription</span>
+        <span class="pill pill-default">Force of nature</span>
+      </div>
+      <div style="font-size:0.82rem; color:var(--mist); font-weight:300;">
+        Pills use 2px border-radius. Rust for project tags, teal for skills, default for traits.
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="comp-section">
+      <div class="comp-section-title">Navigation</div>
+      <div class="nav-example">
+        <a class="nav-ex-logo">Emily Davidson</a>
+        <ul class="nav-ex-links">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Work</a></li>
+          <li><a href="#">Skills</a></li>
+        </ul>
+        <a class="nav-ex-cta">Hire me</a>
+      </div>
+      <div style="margin-top:1rem; font-size:0.82rem; color:var(--mist); font-weight:300;">
+        Frosted glass (backdrop-filter: blur(12px)) on fog background. Logo in DM Serif Display. Links in DM Sans medium, allcaps. CTA in rust.
+      </div>
+    </div>
+
+    <!-- Project cards -->
+    <div class="comp-section">
+      <div class="comp-section-title">Project cards</div>
+      <div class="cards-row">
+        <a class="comp-card">
+          <div class="comp-card-visual v1"></div>
+          <div class="comp-card-body">
+            <div class="comp-card-tag">SaaS · Maine</div>
+            <div class="comp-card-title">Tidely</div>
+            <p class="comp-card-desc">Hyper-local tide info via SMS for Maine boaters.</p>
+          </div>
+        </a>
+        <a class="comp-card">
+          <div class="comp-card-visual v2"></div>
+          <div class="comp-card-body">
+            <div class="comp-card-tag">AI · Subscription</div>
+            <div class="comp-card-title">Stellara</div>
+            <p class="comp-card-desc">AI-powered astrology with free + Pro tiers.</p>
+          </div>
+        </a>
+        <a class="comp-card">
+          <div class="comp-card-visual v3"></div>
+          <div class="comp-card-body">
+            <div class="comp-card-tag">Nonprofit · Directory</div>
+            <div class="comp-card-title">Loops Directory</div>
+            <p class="comp-card-desc">2,957 Boston-area orgs with map + route planner.</p>
+          </div>
+        </a>
+      </div>
+      <div style="margin-top:1rem; font-size:0.82rem; color:var(--mist); font-weight:300;">
+        Card hover: translateY(-5px) + box-shadow. Gradient visual headers — no generic stock imagery. Card title in DM Serif Display.
+      </div>
+    </div>
+
+    <!-- Section label pattern -->
+    <div class="comp-section">
+      <div class="comp-section-title">Section label pattern</div>
+      <div class="pattern-block">
+        <div class="pattern-item">
+          <span class="pattern-swatch-label">Always precedes a heading</span>
+          <span class="label-example">Selected work</span>
+          <h3 class="heading-example-s">Things I've built<br>and <em>shipped.</em></h3>
+        </div>
+        <div class="pattern-item">
+          <span class="pattern-swatch-label">Dark version</span>
+          <span class="label-example" style="color:var(--sand);">What I work with</span>
+          <h3 class="heading-example-s" style="color:var(--navy);">Skills <em>&amp; tools.</em></h3>
+        </div>
+      </div>
+      <div style="margin-top:1rem; font-size:0.82rem; color:var(--mist); font-weight:300;">
+        Label: 0.72rem · 500 weight · 0.18em letter-spacing · uppercase · rust (#c45c2e). Always immediately above an h2. Heading ends with a period.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════ BACK COVER ══════════ -->
+<div class="back-cover">
+  <div class="back-cover-inner">
+    <div>
+      <p style="font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--mist); margin-bottom:1rem;">Emily Davidson — Brand Book v1.0</p>
+      <h2 class="back-name">Building things<br>that <em>actually</em> work.<br>From Maine.</h2>
+    </div>
+    <div class="back-meta">
+      <p>Portland, Maine</p>
+      <p><a href="/cdn-cgi/l/email-protection#99f1fcf5f5f6d9fcf4f0f5e0fdf8eff0fdeaf6f7b7faf6f4"><span class="__cf_email__" data-cfemail="c2aaa7aeaead82a7afabaebba6a3b4aba6b1adaceca1adaf">[email&#160;protected]</span></a></p>
+      <p style="margin-top:1rem; color:rgba(143,170,184,0.4);">DM Serif Display · DM Sans<br>Navy · Rust · Teal · Fog · Sand</p>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></body>
+</html>

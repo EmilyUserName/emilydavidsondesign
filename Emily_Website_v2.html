@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emily Davidson — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0d2136;
+    --slate:  #1e3a52;
+    --fog:    #f4f1eb;
+    --sand:   #e8dfc8;
+    --rust:   #c45c2e;
+    --teal:   #6aabae;
+    --gold:   #f5c842;
+    --mist:   #8faab8;
+    --white:  #fdfcfa;
+    --ink:    #3a5266;
+    --cream:  #e8e0cc;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fog);
+    color: var(--navy);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.1rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,33,54,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(245,200,66,0.12);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem; color: var(--white);
+    text-decoration: none; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .nav-logo-mark {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--rust);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .nav-logo-mark span {
+    font-family: 'DM Serif Display', serif;
+    font-size: 0.8rem; color: var(--white); font-style: italic;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 0.78rem; font-weight: 500; color: var(--mist);
+    text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    font-size: 0.75rem; font-weight: 500;
+    background: var(--rust); color: var(--white) !important;
+    padding: 0.45rem 1.1rem; border-radius: 2px;
+    letter-spacing: 0.05em;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: #a84e26 !important; color: var(--white) !important; }
+
+  /* hamburger */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+  .nav-hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--mist); border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* mobile menu drawer */
+  .nav-drawer {
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(13,33,54,0.98);
+    z-index: 99;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 2.5rem;
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; color: var(--white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-drawer a:hover { color: var(--gold); }
+  .nav-drawer .drawer-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    background: var(--rust); color: var(--white);
+    padding: 0.75rem 2rem; border-radius: 2px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    margin-top: 1rem;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+
+  .hero-rose {
+    position: absolute; right: -120px; bottom: -120px;
+    opacity: 0.06; pointer-events: none;
+    animation: slowSpin 80s linear infinite;
+  }
+
+  .hero-stripe {
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rust) 0%, var(--gold) 50%, var(--teal) 100%);
+  }
+
+  @keyframes slowSpin { to { transform: rotate(360deg); } }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-inner {
+    padding: 8rem 5rem 6rem;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    display: flex; align-items: center; gap: 0.75rem;
+    margin-bottom: 2rem;
+    opacity: 0; animation: fadeUp 0.7s 0.2s ease forwards;
+  }
+
+  .eyebrow-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+
+  .eyebrow-text {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--mist); font-weight: 400;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(3.2rem, 7.5vw, 6.5rem);
+    color: var(--white); line-height: 1.0; margin-bottom: 1.75rem;
+    opacity: 0; animation: fadeUp 0.7s 0.35s ease forwards;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-sub {
+    font-size: 1.05rem; color: var(--mist);
+    max-width: 480px; line-height: 1.85; margin-bottom: 3rem;
+    font-weight: 300;
+    opacity: 0; animation: fadeUp 0.7s 0.5s ease forwards;
+  }
+
+  .hero-sub em { color: var(--cream); font-style: italic; }
+
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.7s 0.65s ease forwards;
+  }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 5rem;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding-top: 2.5rem;
+    opacity: 0; animation: fadeUp 0.7s 0.8s ease forwards;
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem; color: var(--white); line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+
+  .stat-num em { font-style: italic; color: var(--gold); }
+
+  .stat-label {
+    font-size: 0.72rem; color: var(--mist); text-transform: uppercase;
+    letter-spacing: 0.1em; font-weight: 400;
+  }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block; padding: 0.85rem 2rem;
+    font-size: 0.82rem; font-weight: 500;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: all 0.2s; cursor: pointer; border: none;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .btn-primary { background: var(--rust); color: var(--white); }
+  .btn-primary:hover { background: #a84e26; }
+
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-gold:hover { background: #e0b53a; }
+
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.25);
+    color: var(--white);
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── WAVE ── */
+  .wave-divider { width: 100%; overflow: hidden; line-height: 0; background: var(--navy); }
+  .wave-divider svg { display: block; }
+
+  /* ── PULL QUOTE ── */
+  .press-strip {
+    background: var(--cream);
+    padding: 5rem 3rem;
+    text-align: center; position: relative; overflow: hidden;
+  }
+
+  .press-strip::before {
+    content: '\201C';
+    font-family: 'DM Serif Display', serif;
+    font-size: 22rem; color: rgba(13,33,54,0.05);
+    position: absolute; top: -5rem; left: 50%;
+    transform: translateX(-50%); line-height: 1;
+    pointer-events: none; user-select: none;
+  }
+
+  .press-inner { max-width: 780px; margin: 0 auto; position: relative; }
+
+  .press-source {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--rust); font-weight: 500; margin-bottom: 1.5rem;
+  }
+
+  .press-quote {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    color: var(--navy); line-height: 1.55; font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+
+  .press-quote em { font-style: normal; color: var(--rust); }
+  .press-attr { font-size: 0.84rem; color: var(--ink); font-weight: 300; }
+
+  /* ── ABOUT ── */
+  .about-section {
+    padding: 7rem 5rem; max-width: 1100px; margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--rust); font-weight: 500; margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--navy); line-height: 1.1; margin-bottom: 1.5rem;
+  }
+
+  .about-grid {
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    gap: 5rem; align-items: start; margin-top: 3rem;
+  }
+
+  .about-text p {
+    font-size: 1rem; color: var(--ink); line-height: 1.9;
+    margin-bottom: 1.1rem; font-weight: 300;
+  }
+
+  .about-text p em { font-style: italic; color: var(--navy); font-weight: 400; }
+
+  .about-right { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .trades-card {
+    background: var(--navy);
+    border-radius: 4px; padding: 1.75rem;
+  }
+
+  .trades-card h3 {
+    font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.1rem; font-weight: 500;
+  }
+
+  .trades-list { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+  .trade-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2px; padding: 0.28rem 0.7rem;
+    font-size: 0.76rem; color: var(--mist); font-weight: 400;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .trade-pill:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* mechanic nod card */
+  .mechanic-card {
+    background: var(--fog);
+    border: 1px solid rgba(13,33,54,0.1);
+    border-left: 3px solid var(--teal);
+    border-radius: 4px; padding: 1.35rem 1.5rem;
+  }
+  .mechanic-card p {
+    font-size: 0.85rem; color: var(--ink); line-height: 1.7;
+    font-weight: 300; margin: 0;
+  }
+  .mechanic-card p em { font-style: italic; color: var(--slate); }
+
+  /* ── PROJECTS ── */
+  .projects-wrap { background: var(--white); padding: 7rem 0; }
+  .projects-inner { max-width: 1100px; margin: 0 auto; padding: 0 5rem; }
+
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem; margin-top: 3rem;
+  }
+
+  .project-card {
+    border-radius: 4px; overflow: hidden;
+    text-decoration: none; color: inherit;
+    background: var(--fog);
+    border: 1px solid rgba(13,33,54,0.07);
+    transition: transform 0.28s cubic-bezier(.2,.8,.4,1), box-shadow 0.28s;
+    display: flex; flex-direction: column;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 56px rgba(13,33,54,0.12);
+  }
+
+  .project-card.featured {
+    grid-column: span 2;
+    flex-direction: row;
+  }
+
+  .card-visual {
+    height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; flex-shrink: 0;
+  }
+
+  .project-card.featured .card-visual {
+    height: auto; min-height: 260px; width: 42%;
+  }
+
+  .cv-tidely   { background: linear-gradient(135deg, #0d2136 0%, #1e3a52 100%); }
+  .cv-stellara { background: linear-gradient(135deg, #1a1535 0%, #2e1f5e 100%); }
+  .cv-loops    { background: linear-gradient(135deg, #1c3d3c 0%, #2f6a68 100%); }
+  .cv-rolling  { background: linear-gradient(135deg, #2d3d25 0%, #4a6741 100%); }
+
+  .card-gold-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--rust), var(--gold));
+    opacity: 0; transition: opacity 0.3s;
+  }
+
+  .project-card:hover .card-gold-bar { opacity: 1; }
+
+  .card-body { padding: 1.75rem; flex: 1; }
+
+  .card-tag {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.45rem; font-weight: 500;
+    display: inline-block;
+  }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem; color: var(--navy); margin-bottom: 0.55rem;
+  }
+
+  .card-desc {
+    font-size: 0.88rem; color: var(--ink); line-height: 1.7; font-weight: 300;
+  }
+
+  .card-arrow {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.78rem; font-weight: 500; color: var(--rust);
+    margin-top: 1.25rem; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: gap 0.2s;
+  }
+  .project-card:hover .card-arrow { gap: 0.7rem; }
+
+  /* ── SKILLS ── */
+  .skills-wrap { background: var(--navy); padding: 7rem 0; }
+  .skills-inner { max-width: 1100px; margin: 0 auto; padding: 0 5rem; }
+  .skills-inner .section-title { color: var(--white); }
+  .skills-inner .section-label { color: var(--gold); }
+
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 4px; overflow: hidden; margin-top: 3rem;
+  }
+
+  .skill-group { background: rgba(255,255,255,0.02); padding: 2.25rem; }
+
+  .skill-group h3 {
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 1.25rem; font-weight: 500;
+  }
+
+  .skill-group:nth-child(1) h3 { color: var(--gold); }
+  .skill-group:nth-child(2) h3 { color: var(--teal); }
+  .skill-group:nth-child(3) h3 { color: var(--rust); }
+
+  .skill-list { list-style: none; }
+  .skill-list li {
+    font-size: 0.88rem; color: var(--mist); padding: 0.38rem 0;
+    font-weight: 300; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .skill-list li:last-child { border-bottom: none; }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    text-align: center; padding: 9rem 3rem;
+    max-width: 700px; margin: 0 auto;
+  }
+
+  .contact-section .section-label { display: block; margin-bottom: 0.6rem; }
+
+  .contact-section .section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem;
+  }
+
+  .contact-section > p {
+    font-size: 1.05rem; color: var(--ink);
+    max-width: 420px; margin: 0 auto 3rem;
+    font-weight: 300; line-height: 1.8;
+  }
+
+  /* contact form */
+  .contact-form {
+    text-align: left;
+    display: flex; flex-direction: column; gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-field {
+    display: flex; flex-direction: column; gap: 0.35rem;
+  }
+
+  .form-field label {
+    font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink);
+  }
+
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem; font-weight: 300;
+    color: var(--navy);
+    background: var(--white);
+    border: 1.5px solid rgba(13,33,54,0.15);
+    border-radius: 2px;
+    padding: 0.75rem 1rem;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    border-color: var(--teal);
+  }
+
+  .form-field textarea { resize: vertical; min-height: 130px; }
+
+  .form-submit {
+    width: 100%;
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .form-note {
+    font-size: 0.78rem; color: var(--mist); text-align: center;
+    font-weight: 300; margin-top: 0.5rem;
+  }
+
+  .form-success {
+    display: none;
+    background: rgba(106,171,174,0.1);
+    border: 1px solid var(--teal);
+    border-radius: 4px; padding: 1.5rem;
+    text-align: center;
+    font-size: 0.95rem; color: var(--ink); font-weight: 300;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy); color: var(--mist);
+    text-align: center; padding: 2.25rem;
+    font-size: 0.8rem;
+    border-top: 3px solid transparent;
+    border-image: linear-gradient(90deg, var(--rust), var(--gold), var(--teal)) 1;
+  }
+
+  footer a { color: var(--mist); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE: TABLET ── */
+  @media (max-width: 960px) {
+    nav { padding: 1rem 2rem; }
+    .hero-inner { padding: 7rem 2.5rem 5rem; }
+    .about-section { padding: 5rem 2.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-inner, .skills-inner { padding: 0 2.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { flex-direction: column; grid-column: span 1; }
+    .project-card.featured .card-visual { width: 100%; min-height: 200px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── RESPONSIVE: MOBILE ── */
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+
+    .hero-inner { padding: 6.5rem 1.5rem 4rem; }
+    .hero-stats { gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; }
+    .stat-num { font-size: 2rem; }
+
+    .about-section { padding: 4rem 1.5rem; }
+    .about-grid { gap: 2rem; }
+
+    .projects-wrap { padding: 5rem 0; }
+    .projects-inner { padding: 0 1.5rem; }
+    .projects-grid { margin-top: 2rem; }
+    .card-body { padding: 1.25rem; }
+
+    .skills-wrap { padding: 5rem 0; }
+    .skills-inner { padding: 0 1.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+
+    .press-strip { padding: 4rem 1.5rem; }
+
+    .contact-section { padding: 5rem 1.5rem; }
+
+    footer { padding: 2rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark"><span>ED</span></div>
+    Emily Davidson
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact" class="nav-cta">Hire me</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="drawer">
+  <a href="#about" class="drawer-link">About</a>
+  <a href="#work" class="drawer-link">Work</a>
+  <a href="#skills" class="drawer-link">Skills</a>
+  <a href="#contact" class="drawer-cta">Hire me</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-stripe"></div>
+
+  <svg class="hero-rose" width="800" height="800" viewBox="0 0 800 800" fill="none" aria-hidden="true">
+    <circle cx="400" cy="400" r="370" stroke="white" stroke-width="1"/>
+    <circle cx="400" cy="400" r="280" stroke="white" stroke-width="1"/>
+    <circle cx="400" cy="400" r="190" stroke="white" stroke-width="1"/>
+    <circle cx="400" cy="400" r="100" stroke="white" stroke-width="1"/>
+    <line x1="30" y1="400" x2="770" y2="400" stroke="white" stroke-width="0.5"/>
+    <line x1="400" y1="30" x2="400" y2="770" stroke="white" stroke-width="0.5"/>
+    <line x1="138" y1="138" x2="662" y2="662" stroke="white" stroke-width="0.5"/>
+    <line x1="662" y1="138" x2="138" y2="662" stroke="white" stroke-width="0.5"/>
+    <polygon points="400,30 412,90 400,78 388,90" fill="white"/>
+    <polygon points="400,770 412,710 400,722 388,710" fill="white"/>
+    <polygon points="30,400 90,388 78,400 90,412" fill="white"/>
+    <polygon points="770,400 710,388 722,400 710,412" fill="white"/>
+  </svg>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-dot"></div>
+      <span class="eyebrow-text">Portland, Maine — Web Developer & Builder</span>
+    </div>
+
+    <h1>Building things<br>that <em>actually</em><br>work.</h1>
+
+    <p class="hero-sub">
+      Full-stack web apps, SaaS tools, and digital products —
+      from idea to launch. Maine-made.
+      <em>A force of nature wearing a knit hat.</em>
+    </p>
+
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-gold">See my work</a>
+      <a href="#contact" class="btn btn-outline">Get in touch</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num"><em>Shipped</em></div>
+        <div class="stat-label">and counting</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num"><em>Full</em></div>
+        <div class="stat-label">Stack, end-to-end</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Trades mastered</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num"><em>ME</em></div>
+        <div class="stat-label">Coastal Maine</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WAVE -->
+<div class="wave-divider">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 70" preserveAspectRatio="none" width="100%" height="70">
+    <path d="M0,45 C240,90 480,0 720,45 C960,90 1200,0 1440,45 L1440,70 L0,70 Z" fill="#f4f1eb"/>
+  </svg>
+</div>
+
+<!-- PULL QUOTE -->
+<div class="press-strip">
+  <div class="press-inner">
+    <div class="press-source">Kind words from my brother</div>
+    <p class="press-quote">
+      "She is salty as the Atlantic. She is
+      <em>as kind as a kitten asleep in a patch of afternoon sun.</em>
+      And she is, without question, one of a kind."
+    </p>
+    <p class="press-attr">— Written by someone who has known me my whole life, and still likes me</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+  <div class="section-label">About me</div>
+  <h2 class="section-title">Builder at heart,<br>developer by choice.</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I don't have an elevator pitch. I have calluses, a paintbrush, a lesson plan, and a keyboard — and I will deploy all of them in the same week without blinking.</p>
+      <p>I come to web development from a genuinely hands-on background — I've run my own acupuncture practice, done construction work, and most recently built data integrations in hospitality tech. That means I ship practical things, <em>not just pretty prototypes.</em></p>
+      <p>Based on the Maine coast, I build full-stack web products independently, from architecture through deployment. My neighbors call me when the answer is complicated. My clients do too.</p>
+    </div>
+    <div class="about-right">
+      <div class="trades-card">
+        <h3>Her trades</h3>
+        <div class="trades-list">
+          <span class="trade-pill">Web developer</span>
+          <span class="trade-pill">Acupuncturist</span>
+          <span class="trade-pill">Fine artist</span>
+          <span class="trade-pill">General contractor</span>
+          <span class="trade-pill">School teacher</span>
+          <span class="trade-pill">IT specialist</span>
+          <span class="trade-pill">Craftsman</span>
+          <span class="trade-pill">Mooring wrangler</span>
+          <span class="trade-pill">Marine mechanic</span>
+          <span class="trade-pill">Force of nature</span>
+        </div>
+      </div>
+      <div class="mechanic-card">
+        <p>Currently adding <em>outboard motor repair</em> to the list — because the water deserves people who can fix things too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<div class="projects-wrap" id="work">
+  <div class="projects-inner">
+    <div class="section-label">Selected work</div>
+    <h2 class="section-title">Things I've built and shipped.</h2>
+
+    <div class="projects-grid">
+
+      <!-- TIDELY featured -->
+      <a class="project-card featured" href="https://www.tidely-app.com/" target="_blank" rel="noopener noreferrer">
+        <div class="card-visual cv-tidely">
+          <div class="card-gold-bar"></div>
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+            <path d="M10,50 Q20,35 30,50 Q40,65 50,50 Q60,35 70,50" stroke="#6aabae" stroke-width="2.5" fill="none"/>
+            <path d="M10,40 Q20,25 30,40 Q40,55 50,40 Q60,25 70,40" stroke="#8faab8" stroke-width="2" fill="none" opacity="0.6"/>
+            <path d="M10,60 Q20,45 30,60 Q40,75 50,60 Q60,45 70,60" stroke="#8faab8" stroke-width="1.5" fill="none" opacity="0.3"/>
+            <circle cx="40" cy="20" r="8" fill="#f5c842" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">SaaS · SMS · Maine</span>
+          <div class="card-title">Tidely</div>
+          <p class="card-desc">Hyper-local tide information via SMS for Maine boaters. Real paying users. Built lean and distributed via marina flyers along the midcoast.</p>
+          <div class="card-arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- STELLARA -->
+      <a class="project-card" href="https://stellara-horoscope.com/" target="_blank" rel="noopener noreferrer">
+        <div class="card-visual cv-stellara">
+          <div class="card-gold-bar"></div>
+          <svg width="56" height="56" viewBox="0 0 60 60" fill="none">
+            <polygon points="30,5 34,22 50,22 37,32 42,49 30,39 18,49 23,32 10,22 26,22" fill="#f5c842" opacity="0.9"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">AI · SaaS · Subscription</span>
+          <div class="card-title">Stellara</div>
+          <p class="card-desc">AI-powered astrology app with free horoscopes, one-time chart purchases, and a $12/mo Pro tier.</p>
+          <div class="card-arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- LOOPS -->
+      <a class="project-card" href="https://loops-directory.vercel.app/" target="_blank" rel="noopener noreferrer">
+        <div class="card-visual cv-loops">
+          <div class="card-gold-bar"></div>
+          <svg width="56" height="56" viewBox="0 0 60 60" fill="none">
+            <circle cx="30" cy="30" r="20" stroke="#6aabae" stroke-width="1.5" fill="none"/>
+            <circle cx="30" cy="30" r="4" fill="#6aabae"/>
+            <line x1="30" y1="10" x2="30" y2="18" stroke="#6aabae" stroke-width="1.5"/>
+            <line x1="30" y1="42" x2="30" y2="50" stroke="#6aabae" stroke-width="1.5"/>
+            <line x1="10" y1="30" x2="18" y2="30" stroke="#6aabae" stroke-width="1.5"/>
+            <line x1="42" y1="30" x2="50" y2="30" stroke="#6aabae" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Nonprofit · Directory</span>
+          <div class="card-title">Loops Directory</div>
+          <p class="card-desc">Community resource directory with 2,957 Boston-area organizations, map view, category filtering, and a volunteer route planner.</p>
+          <div class="card-arrow">View project →</div>
+        </div>
+      </a>
+
+      <!-- ROLLING MEADOWS -->
+      <a class="project-card" href="https://www.rollingmeadowsretreat.com/" target="_blank" rel="noopener noreferrer">
+        <div class="card-visual cv-rolling">
+          <div class="card-gold-bar"></div>
+          <svg width="56" height="56" viewBox="0 0 60 60" fill="none">
+            <path d="M5,45 Q15,25 25,35 Q30,10 35,30 Q45,15 55,45 Z" fill="#9FE1CB" opacity="0.5"/>
+            <circle cx="42" cy="18" r="8" fill="#f5c842" opacity="0.85"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <span class="card-tag">Marketing · CMS · Retreat</span>
+          <div class="card-title">Rolling Meadows Retreat</div>
+          <p class="card-desc">Marketing site for a yoga and meditation retreat center in Maine. Retreat listings, teacher bios, and resource library.</p>
+          <div class="card-arrow">View project →</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="skills-wrap" id="skills">
+  <div class="skills-inner">
+    <div class="section-label">What I work with</div>
+    <h2 class="section-title">Skills & tools.</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Frontend</h3>
+        <ul class="skill-list">
+          <li>Next.js / React</li>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Tailwind CSS</li>
+          <li>Responsive design</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Backend & data</h3>
+        <ul class="skill-list">
+          <li>Supabase / PostgreSQL</li>
+          <li>REST APIs & integrations</li>
+          <li>Google OAuth</li>
+          <li>SMS / Twilio</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Deploy & ship</h3>
+        <ul class="skill-list">
+          <li>Vercel / Netlify</li>
+          <li>Git & GitHub</li>
+          <li>Stripe & payments</li>
+          <li>AI API (Anthropic)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label">Let's work together</div>
+  <h2 class="section-title">Have a project<br><em style="font-style:italic; color:var(--rust);">in mind?</em></h2>
+  <p>Available for freelance — web apps, landing sites, SaaS MVPs, and tool-building. Based in Maine, available everywhere.</p>
+
+  <form
+    class="contact-form"
+    id="contact-form"
+    action="https://formspree.io/f/YOUR_FORM_ID"
+    method="POST"
+  >
+    <div class="form-row">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+      </div>
+    </div>
+    <div class="form-field">
+      <label for="project">What are you working on?</label>
+      <input type="text" id="project" name="project" placeholder="e.g. SaaS MVP, landing page, custom tool...">
+    </div>
+    <div class="form-field">
+      <label for="message">Tell me more</label>
+      <textarea id="message" name="message" placeholder="Rough idea, timeline, budget — whatever you've got." required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary form-submit">Send it →</button>
+  </form>
+
+  <div class="form-success" id="form-success">
+    ✓ &nbsp; Got it — I'll be in touch soon.
+  </div>
+
+  <p class="form-note">Or just email directly: <a href="mailto:emily@emilydavidson.com" style="color:var(--rust);">emily@emilydavidson.com</a></p>
+</section>
+
+<footer>
+  <p>Emily Davidson &nbsp;·&nbsp; Portland, Maine &nbsp;·&nbsp; <a href="mailto:emily@emilydavidson.com">emily@emilydavidson.com</a></p>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('drawer');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    drawer.classList.toggle('open');
+    document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  });
+
+  // Close drawer on link click
+  drawer.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Contact form — Formspree AJAX
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    } else {
+      alert('Something went wrong — please email me directly.');
+    }
+  });
+</script>
+
+</body>
+</html>
